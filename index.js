@@ -79,7 +79,7 @@ function showTemperature(response) {
 }
 
 function getWeatherByCity(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query={query}&key={key}`;
 
   axios
     .get(apiUrl)
@@ -92,7 +92,7 @@ function getWeatherByCity(city) {
 }
 
 function getWeatherByCoordinates(latitude, longitude) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon={lon}&lat={lat}&key={key}`;
 
   axios
     .get(apiUrl)
