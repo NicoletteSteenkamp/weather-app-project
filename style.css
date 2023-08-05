@@ -1,6 +1,5 @@
-body {
+.background {
   background-image: url("morn.jpg");
-
+  background-size: 700px;
   background-color: blueviolet;
-  background-size: 650px;
 }
