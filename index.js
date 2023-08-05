@@ -41,7 +41,7 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let precipitation = response.data.weather[0].description;
 
-  let weatherIconUrl = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`;
+  let weatherIconUrl = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png`;
   let weatherIconElement = document.getElementById("weatherIcon");
   weatherIconElement.src = weatherIconUrl;
 
@@ -63,19 +63,9 @@ function showTemperature(response) {
   let highTemperatureElement = document.querySelector("[data-current-high]");
   highTemperatureElement.textContent = `${highTemperature}°`;
 
-  let flHighTemperature = Math.round(response.data.main.feels_like);
-  let flHighTemperatureElement = document.querySelector(
-    "[data-current-fl-high]"
-  );
-  flHighTemperatureElement.textContent = `${flHighTemperature}°`;
-
   let lowTemperature = Math.round(response.data.main.temp_min);
   let lowTemperatureElement = document.querySelector("[data-current-low]");
   lowTemperatureElement.textContent = `${lowTemperature}°`;
-
-  let flLowTemperature = Math.round(response.data.main.temp_min);
-  let flLowTemperatureElement = document.querySelector("[data-current-fl-low]");
-  flLowTemperatureElement.textContent = `${flLowTemperature}°`;
 }
 
 function getWeatherByCity(city) {
