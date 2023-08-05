@@ -6,3 +6,9 @@
   height: 600px;
   border: 2px solid #ff98ff;
 }
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
