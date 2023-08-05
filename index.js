@@ -92,6 +92,7 @@ function searchCity(event) {
   let searchedCity = input.value.trim();
   if (searchedCity) {
     defaultCity = searchedCity;
+    document.getElementById("city").textContent = defaultCity;
     getWeatherByCity(defaultCity);
   }
 }
