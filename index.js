@@ -1,7 +1,6 @@
 let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
 let apiUrl =
-  "https://api.shecodes.io/weather/v1/current?queryJohannesburg&key={apiKey}`";
-let defaultCity = "Johannesburg";
+  "https://api.shecodes.io/weather/v1/current?query=Johannesburg&key=ae997t30869fc345038bf7f0abaao7e6&units=metric";
 
 function updateDay() {
   let days = [
