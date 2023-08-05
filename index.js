@@ -113,10 +113,7 @@ function searchCity(event) {
   getWeatherByCity(input.value);
 }
 
-window.onload = function () {
-  updateDay();
-  updateTime();
-  setInterval(updateDay, 60000);
+
 
   let citySearchForm = document.getElementById("citySearchForm");
   citySearchForm.addEventListener("submit", searchCity);
