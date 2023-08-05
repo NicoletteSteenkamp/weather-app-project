@@ -35,18 +35,56 @@ li:first-letter {
 .overview {
   margin-bottom: 20px;
 }
+body {
+  font-family: Cerebri-Sans, Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+
+.weather-app-wrapper {
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+.weather-app {
+  background-image: url("../morn.jpg");
+  padding: 20px;
+  border: 1px solid #f5aff5;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 38px;
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 20px;
+  list-style: none;
+}
+
+li:first-letter {
+  text-transform: capitalize;
+}
+
+.overview {
+  margin-bottom: 20px;
+}
+
 .weather-temperature img {
   margin-right: 5px;
   height: 64px;
   width: 64px;
 }
 
-.weather-temperature strong {
-  color: rgb(33, 33, 33);
-  font-size: 64px;
-  line-height: 1;
-  font-weight: 400;
-}
 .weather-temperature strong {
   color: rgb(33, 33, 33);
   font-size: 64px;
@@ -72,7 +110,7 @@ li:first-letter {
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
-  color: #000;
+  color: #fff;
 }
 
 .weather-forecast-date {
@@ -86,4 +124,16 @@ li:first-letter {
 
 .weather-forecast-temperatures {
   font-size: 13px;
+}
+
+.overview ul {
+  display: flex;
+}
+
+.overview li {
+  margin-right: 20px;
+}
+
+.overview li:last-child {
+  margin-right: 0;
 }
