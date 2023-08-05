@@ -15,34 +15,34 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
-    <div class="Background">
+    <div class="Background"></div>
     <header>
       <div id="headerCityName"></div>
 
       <div class="header-left">
-        <span class="currentDay" data-index="0">Today</span>
+        <span class="currentDay">Today</span>
         </div>
           <img src="icon_url": alt="Weather Icon" id="weatherIcon" />
-        </div>
+        
         <div class="currentTemperature">
           <span>13</span>
+          <span class="currentDate">5 August 2023</span>
           <span class="currentTime">23:13</span>
         </div>
       </div>
 
       <div class="header-right">
-        <div class="info-group">
           <div class="label">Wind</div>
            <div>
-            <span data-current-wind>9</span
+            <span class="wind">9</span
             ><span class="value-sub-info">kph</span>
             <div class="info-group">
            <div class="label">Low</div>
-           <div><span data-current-low>19</span>&deg;</div>
+           <div class="data-current-low">19</div>
            
         </div>
-          <div class="info-group">
-          <div class="label">Precip</div>
+          
+          <div id="precipitation">Precip</div>
           <div>
             <span data-current-precip>0.1</span
             ><span class="value-sub-info">cm</span>
@@ -70,7 +70,7 @@
     </div>
     
     <script src="index.js"></script>
-    </div>
+    
     <a href="https://github.com/NicoletteSteenkamp/weather-app-project"></a>
 
   </body>
