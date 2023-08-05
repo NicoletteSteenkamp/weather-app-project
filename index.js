@@ -1,4 +1,6 @@
 let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
+let apiUrl =
+  "https://api.shecodes.io/weather/v1/current?queryJohannesburg&key={apiKey}`";
 let defaultCity = "Johannesburg";
 
 function updateDay() {
@@ -89,23 +91,26 @@ function getCurrentLocationWeather() {
 function searchCity(event) {
   event.preventDefault();
   let input = document.getElementById("city-input");
-  let searchedCity = input.value.trim();
+
   if (searchedCity) {
     defaultCity = searchedCity;
     document.getElementById("city").textContent = defaultCity;
     getWeatherByCity(defaultCity);
   }
 }
+function searchCity(event) {
+  event.preventDefault();
+  let search = input.value.trim();
+  let input = document.querySelector("#search-text-input");
+  getWeatherByCity(input.value);
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   updateDay();
   updateTime();
 
-  let cityElement = document.getElementById("city");
-  cityElement.textContent = defaultCity;
-
-  let citySearchForm = document.getElementById("search-form");
+  let citySearchForm = document.getElementById("citySearchForm");
   citySearchForm.addEventListener("submit", searchCity);
 
-  getWeatherByCity(defaultCity);
+  getWeatherByCity("Johannesburg");
 });

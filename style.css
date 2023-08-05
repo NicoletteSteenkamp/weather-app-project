@@ -125,15 +125,3 @@ li:first-letter {
 .weather-forecast-temperatures {
   font-size: 13px;
 }
-
-.overview ul {
-  display: flex;
-}
-
-.overview li {
-  margin-right: 20px;
-}
-
-.overview li:last-child {
-  margin-right: 0;
-}
