@@ -3,6 +3,7 @@ body {
   background-image: url("../morn.jpg");
   font-family: sans-serif;
   margin: 0;
+  max-width: 600px;
 }
 
 *,

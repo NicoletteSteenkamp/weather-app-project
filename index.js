@@ -1,4 +1,4 @@
-let apiKey = "0f551fc99607cc67e1d7ddb48ede8b55";
+let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
 let formattedTime;
 
 function updateDay() {
