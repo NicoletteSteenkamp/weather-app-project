@@ -1,5 +1,4 @@
 let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
-let formattedTime;
 
 function updateDay() {
   let days = [
@@ -15,10 +14,8 @@ function updateDay() {
   let currentDayIndex = currentTime.getDay();
   let currentDay = days[currentDayIndex];
 
-  let currentDayElements = document.querySelectorAll(".currentDay");
-  for (let i = 0; i < currentDayElements.length; i++) {
-    currentDayElements[i].textContent = currentDay;
-  }
+  let currentDayElement = document.getElementById("city");
+  currentDayElement.textContent = currentDay;
 }
 
 function updateTime() {
@@ -28,78 +25,59 @@ function updateTime() {
     minute: "2-digit",
   });
 
-  let currentTimeElements = document.querySelectorAll(".currentTime");
-  for (let i = 0; i < currentTimeElements.length; i++) {
-    currentTimeElements[i].textContent = formattedTime;
-  }
+  let currentTimeElement = document.getElementById("currentTime");
+  currentTimeElement.textContent = formattedTime;
 }
 
-function showTemperature(response) {
-  let cityNameElement = document.getElementById("headerCityName");
+function showWeatherData(response) {
+  let cityNameElement = document.getElementById("city");
   cityNameElement.textContent = response.data.name;
 
   let temperature = Math.round(response.data.main.temp);
-  let precipitation = response.data.weather[0].description;
-
-  let weatherIconUrl = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png`;
-  let weatherIconElement = document.getElementById("weatherIcon");
+  let weatherDescription = response.data.weather[0].description;
+  let weatherIconUrl = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon}.png`;
+  let weatherIconElement = document.getElementById("weather-icon");
   weatherIconElement.src = weatherIconUrl;
 
-  let temperatureElements = document.querySelectorAll(
-    ".currentTemperature span"
-  );
+  let temperatureElements = document.querySelectorAll(".currentTemperature");
   for (let i = 0; i < temperatureElements.length; i++) {
     temperatureElements[i].textContent = `${temperature}°C`;
   }
 
-  let precipitationElement = document.querySelector("[data-current-precip]");
-  precipitationElement.textContent = precipitation;
+  let precipitationElement = document.getElementById("condition");
+  precipitationElement.textContent = weatherDescription;
 
   let windSpeed = response.data.wind.speed;
-  let windElement = document.querySelector("[data-current-wind]");
-  windElement.textContent = `${windSpeed} kph`;
+  let windElement = document.getElementById("wind");
+  windElement.textContent = `Wind: ${windSpeed} km/h`;
+}
 
-  let highTemperature = Math.round(response.data.main.temp_max);
-  let highTemperatureElement = document.querySelector("[data-current-high]");
-  highTemperatureElement.textContent = `${highTemperature}°`;
-
-  let lowTemperature = Math.round(response.data.main.temp_min);
-  let lowTemperatureElement = document.querySelector("[data-current-low]");
-  lowTemperatureElement.textContent = `${lowTemperature}°`;
+function getWeatherData(url) {
+  axios
+    .get(url)
+    .then((response) => {
+      showWeatherData(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 function getWeatherByCity(city) {
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query={query}&key={key}`;
-
-  axios
-    .get(apiUrl)
-    .then((response) => {
-      showTemperature(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  getWeatherData(apiUrl);
 }
 
 function getWeatherByCoordinates(latitude, longitude) {
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon={lon}&lat={lat}&key={key}`;
-
-  axios
-    .get(apiUrl)
-    .then((response) => {
-      showTemperature(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  getWeatherData(apiUrl);
 }
 
 function getCurrentLocationWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
-      let latitude = position.coords.latitude;
-      let longitude = position.coords.longitude;
-
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
       getWeatherByCoordinates(latitude, longitude);
     });
   } else {
@@ -109,14 +87,16 @@ function getCurrentLocationWeather() {
 
 function searchCity(event) {
   event.preventDefault();
-  let input = document.querySelector("#search-text-input");
+  const input = document.getElementById("city-input");
   getWeatherByCity(input.value);
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  updateDay();
+  updateTime();
 
-
-  let citySearchForm = document.getElementById("citySearchForm");
+  const citySearchForm = document.getElementById("search-form");
   citySearchForm.addEventListener("submit", searchCity);
 
-  getWeatherByCity("Johannesburg");
-};
+  getCurrentLocationWeather();
+});
