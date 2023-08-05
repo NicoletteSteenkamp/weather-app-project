@@ -1,29 +1,17 @@
-.background {
+body {
   background-image: url("morn.jpg");
   background-size: 700px;
   background-color: blueviolet;
   width: 600px;
   height: 600px;
   border: 2px solid #ff98ff;
+  margin: 75px 0;
+  padding: 12px 0;
 }
 
 *,
 :after,
 :before {
   box-sizing: border-box;
-}
-
-.left {
-  color: #fff;
-  display: flex;
-  width: 50%;
-  align-items: center;
-  justify-content: center;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-right: 2px solid hsl(200, 100%, 10%);
-}
-
-.right {
-  color: #fff;
+  padding: 15px 0;
 }
