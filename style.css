@@ -1,5 +1,30 @@
 body {
+  font-family: Cerebri-Sans, Helvetica, Arial, sans-serif;
+}
+.weather-app {
   background-image: url("../morn.jpg");
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #fd9dfd;
+  border-radius: 5px;
+}
+h1 {
+  color: #fff;
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 38px;
+  margin-bottom: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 20px;
+  list-style: none;
 }
 
 *,
