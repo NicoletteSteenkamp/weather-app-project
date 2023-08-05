@@ -12,3 +12,18 @@
 :before {
   box-sizing: border-box;
 }
+
+.left {
+  color: #fff;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-right: 2px solid hsl(200, 100%, 10%);
+}
+
+.right {
+  color: #fff;
+}
