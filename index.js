@@ -1,4 +1,5 @@
 let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
+let defaultCity = "Johannesburg";
 
 function updateDay() {
   let days = [
@@ -14,13 +15,13 @@ function updateDay() {
   let currentDayIndex = currentTime.getDay();
   let currentDay = days[currentDayIndex];
 
-  let currentDayElement = document.getElementById("city");
+  let currentDayElement = document.getElementById("currentDay");
   currentDayElement.textContent = currentDay;
 }
 
 function updateTime() {
-  let currentTime = new Date();
-  let formattedTime = currentTime.toLocaleTimeString([], {
+  const currentTime = new Date();
+  const formattedTime = currentTime.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
@@ -64,20 +65,20 @@ function getWeatherData(url) {
 }
 
 function getWeatherByCity(city) {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   getWeatherData(apiUrl);
 }
 
 function getWeatherByCoordinates(latitude, longitude) {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
   getWeatherData(apiUrl);
 }
 
 function getCurrentLocationWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
       getWeatherByCoordinates(latitude, longitude);
     });
   } else {
@@ -87,16 +88,23 @@ function getCurrentLocationWeather() {
 
 function searchCity(event) {
   event.preventDefault();
-  const input = document.getElementById("city-input");
-  getWeatherByCity(input.value);
+  let input = document.getElementById("city-input");
+  let searchedCity = input.value.trim();
+  if (searchedCity) {
+    defaultCity = searchedCity;
+    getWeatherByCity(defaultCity);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   updateDay();
   updateTime();
 
-  const citySearchForm = document.getElementById("search-form");
+  let cityElement = document.getElementById("city");
+  cityElement.textContent = defaultCity;
+
+  let citySearchForm = document.getElementById("search-form");
   citySearchForm.addEventListener("submit", searchCity);
 
-  getCurrentLocationWeather();
+  getWeatherByCity(defaultCity);
 });
