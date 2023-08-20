@@ -33,7 +33,7 @@ let months = [
 let month = months[now.getMonth()];
 let hours = now.getHours();
 let minutes = now.getMinutes();
-.innerHTML = `${dates} ${date} ${month} ${hours}:${minutes}`;
+h1.innerHTML = `${dates} ${date} ${month} ${hours}:${minutes}`;
 
 function displayForecast(response) {
   let forecast = response.data.daily;
@@ -41,7 +41,7 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function(forecastDay, index) {
+  forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
