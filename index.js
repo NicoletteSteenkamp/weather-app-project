@@ -1,23 +1,21 @@
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(
-    response.data.daily[0].temperature.day
-  );
+  temperatureElement.innerHTML = Math.round(response.data.temperature.day);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
   let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = response.data.daily[0].condition.description;
+  descriptionElement.innerHTML = response.data.condition.description;
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.daily[0].temperature.humidity;
+  humidityElement.innerHTML = response.data.temperature.humidity;
 
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = Math.round(response.data.daily[0].wind.speed);
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   let timeElement = document.querySelector("#time");
-  timeElement.innerHTML = formatDate(response.data.daily[0].time * 1000);
+  timeElement.innerHTML = formatDate(response.data.time * 1000);
 
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute("src", response.data.daily[0].condition.icon_url);
-  iconElement.setAttribute("alt", response.data.daily[0].condition.description);
+  iconElement.setAttribute("src", response.data.condition.icon_url);
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
 
