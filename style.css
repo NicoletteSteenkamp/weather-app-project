@@ -1,6 +1,6 @@
 body {
   font-family: Cerebri-Sans, Helvetica, Arial, sans-serif;
-  color: #fff;
+  color: hsl(0, 0%, 0%);
 }
 
 .weather-app-wrapper {
