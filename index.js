@@ -81,4 +81,16 @@ function getWeatherByCity(city) {
     showTemperature(response);
   });
 }
-let city = "Boksburg";
+let defaultCity = "Boksburg";
+
+function search(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  let cityName = cityInput.value.trim();
+  if (cityName.length > 0) {
+    defaultCity = cityName;
+    getWeatherByCity(defaultCity);
+  }
+}
+
+document.querySelector("#search-form").addEventListener("submit", search);
