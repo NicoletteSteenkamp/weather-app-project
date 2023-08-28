@@ -6,12 +6,12 @@ let unitsElement = document.querySelector("#units");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 
 function celsiusToFahrenheit(celsius) {
-  return (celsius * 9) / 5 + 32;
+  return math.round(celsius * 9) / 5 + 32;
 }
 
 fahrenheitLink.addEventListener("click", function () {
-  const currentCelsius = parseFloat(temperatureElement.textContent);
-  const currentFahrenheit = celsiusToFahrenheit(currentCelsius);
+  let currentCelsius = parseFloat(temperatureElement.textContent);
+  let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
   temperatureElement.textContent = currentFahrenheit.toFixed(2);
   unitsElement.textContent = "℉";
 });
