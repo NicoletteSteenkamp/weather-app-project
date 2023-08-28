@@ -108,3 +108,38 @@ li:first-letter {
 .form-control {
   border-radius: 0.25rem;
 }
+#celsius-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+#celsius-link:hover {
+  color: inherit;
+}
+.weather-temp .units {
+  position: relative;
+  top: -30px;
+}
+
+.climate {
+  position: relative;
+  bottom: -95px;
+}
+.weather-temp img {
+  margin-left: 155px;
+  height: 95px;
+  width: 95px;
+}
+.btn {
+  background-color: #708098;
+  border-color: rgb(139, 147, 147);
+}
+.weather-forecast-date {
+  font-size: 15px;
+  font-weight: 150;
+}
+
+.weather-forecast-temps {
+  font-size: 14px;
+  font-weight: 150;
+}
