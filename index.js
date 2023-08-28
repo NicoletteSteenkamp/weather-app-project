@@ -1,4 +1,5 @@
 let defaultCity = "Boksburg";
+let celsiusTemperature = null;
 function getCurrentLocationWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -36,10 +37,8 @@ function formatDate(timeStamp) {
 }
 
 function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#temperature");
-
-  let celsiusTemperature = null;
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  let celsiusTemperature = document.querySelector("#temperature");
+  celsiusTemperature.innerHTML = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
   let descriptionElement = document.querySelector("#description");
@@ -93,8 +92,6 @@ function displayCelsiusTemperature(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
-
-let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
