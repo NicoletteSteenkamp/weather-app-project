@@ -76,12 +76,12 @@ function displayTemperature(response) {
 function getWeatherByCity(city) {
   let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let city = "Boksburg";
 
   axios.get(apiUrl).then((response) => {
     showTemperature(response);
   });
 }
-let defaultCity = "Boksburg";
 
 function search(event) {
   event.preventDefault();
