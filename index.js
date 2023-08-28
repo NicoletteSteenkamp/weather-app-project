@@ -81,7 +81,13 @@ function search(event) {
     getWeatherByCity(defaultCity);
   }
 }
+function celsiusToFahrenheit(celsius) {
+  return (celsius * 9) / 5 + 32;
+}
 
+function fahrenheitToCelsius(fahrenheit) {
+  return ((fahrenheit - 32) * 5) / 9;
+}
 document.addEventListener("DOMContentLoaded", function () {
   let temperatureElement = document.querySelector("#temperature");
   let unitsElement = document.querySelector("#units");
@@ -91,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fahrenheitLink.addEventListener("click", function () {
     let currentCelsius = parseFloat(temperatureElement.textContent);
     let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
-    temperatureElement.textContent = currentFahrenheit.toFixed(0); // Round to whole number
+    temperatureElement.textContent = currentFahrenheit.toFixed(0);
     unitsElement.innerHTML = `&deg;F <span id="celsius-symbol">|</span>`;
   });
 
