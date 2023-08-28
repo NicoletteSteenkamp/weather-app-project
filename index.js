@@ -1,3 +1,5 @@
+let defaultCity = "Boksburg";
+
 function getCurrentLocationWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -72,6 +74,8 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time);
 }
+
+getWeatherByCity(defaultCity);
 
 function getWeatherByCity(city) {
   let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
