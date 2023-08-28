@@ -92,3 +92,11 @@ li:first-letter {
 .weather-forecast-temperatures {
   font-size: 13px;
 }
+#fahrenheit-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+#fahrenheit-link:hover {
+  color: inherit;
+}

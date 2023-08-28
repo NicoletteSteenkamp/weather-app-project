@@ -1,3 +1,16 @@
+function getCurrentLocationWeather() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
+
+      getWeatherByCoordinates(latitude, longitude);
+    });
+  } else {
+    alert("Geolocation is not available on this device.");
+  }
+}
+
 function celsiusToFahrenheit(celsius) {
   return (celsius * 9) / 5 + 32;
 }
@@ -5,10 +18,10 @@ let temperatureElement = document.querySelector("#temperature");
 let unitsElement = document.querySelector("#units");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 
-function celsiusToFahrenheit(celsius) {
-  return math.round(celsius * 9) / 5 + 32;
+function search(event) {
+  event.preventDefault();
 }
-
+let input = document.querySelector("#city-input");
 fahrenheitLink.addEventListener("click", function () {
   let currentCelsius = parseFloat(temperatureElement.textContent);
   let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
@@ -59,7 +72,13 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time);
 }
-let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
 
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Boksburg&key=ae997t30869fc345038bf7f0abaao7e6&units=metric`;
-axios.get(apiUrl).then(displayTemperature);
+function getWeatherByCity(city) {
+  let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then((response) => {
+    showTemperature(response);
+  });
+}
+let city = "Boksburg";
