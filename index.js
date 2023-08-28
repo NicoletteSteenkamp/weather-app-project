@@ -86,12 +86,20 @@ document.addEventListener("DOMContentLoaded", function () {
   let temperatureElement = document.querySelector("#temperature");
   let unitsElement = document.querySelector("#units");
   let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  let celsiusLink = document.querySelector("#celsius");
 
   fahrenheitLink.addEventListener("click", function () {
     let currentCelsius = parseFloat(temperatureElement.textContent);
     let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
-    temperatureElement.textContent = Math.round(currentFahrenheit); // Round to a whole number
-    unitsElement.innerHTML = `&deg;F |`;
+    temperatureElement.textContent = Math.round(currentFahrenheit);
+    unitsElement.innerHTML = `&deg;F |<a href="#" id="celsius">℃</a>`;
+  });
+
+  celsiusLink.addEventListener("click", function () {
+    let currentFahrenheit = parseFloat(temperatureElement.textContent);
+    let currentCelsius = fahrenheitToCelsius(currentFahrenheit);
+    temperatureElement.textContent = Math.round(currentCelsius);
+    unitsElement.innerHTML = `&deg;C |<a href="#" id="fahrenheit-link">℉</a>`;
   });
 
   document.querySelector("#search-form").addEventListener("submit", search);
