@@ -18,6 +18,7 @@ function celsiusToFahrenheit(celsius) {
 }
 
 let temperatureElement = document.querySelector("#temperature");
+temperatureElement.textContent = "--";
 let unitsElement = document.querySelector("#units");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 
