@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let temperatureElement = document.querySelector("#temperature");
   let unitsElement = document.querySelector("#units");
   let fahrenheitLink = document.querySelector("#fahrenheit-link");
-  let celsiusSymbol = document.querySelector("#celsius-symbol");
+  let celsiusLink = document.querySelector("#celsius-link");
 
   fahrenheitLink.addEventListener("click", function () {
     let currentCelsius = parseFloat(temperatureElement.textContent);
@@ -95,14 +95,14 @@ document.addEventListener("DOMContentLoaded", function () {
     unitsElement.innerHTML = `&deg;F <span id="celsius-symbol">|</span>`;
   });
 
-  celsiusSymbol.addEventListener("click", function () {
+  celsiusLink.addEventListener("click", function () {
     let currentFahrenheit = parseFloat(temperatureElement.textContent);
     let currentCelsius = fahrenheitToCelsius(currentFahrenheit);
     temperatureElement.textContent = currentCelsius.toFixed(2);
     unitsElement.innerHTML = `&deg;C <span id="celsius-symbol">|</span>`;
   });
 
-  document.querySelector(".weather-app").addEventListener("submit", search);
+  document.querySelector("#search-form").addEventListener("submit", search);
 
   getWeatherByCity(defaultCity);
 });
