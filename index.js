@@ -99,8 +99,20 @@ document.addEventListener("DOMContentLoaded", function () {
   let unitsElement = document.querySelector("#units");
   let fahrenheitLink = document.querySelector("#fahrenheit-link");
   let celsiusLink = document.querySelector("#celsius-link");
-  fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-  celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+  fahrenheitLink.addEventListener("click", function () {
+    let currentCelsius = parseFloat(temperatureElement.textContent);
+    let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
+    temperatureElement.textContent = currentFahrenheit.toFixed(0);
+    unitsElement.innerHTML = `&deg;F <span id="celsius-symbol">|</span>`;
+  });
+
+  celsiusLink.addEventListener("click", function () {
+    let currentFahrenheit = parseFloat(temperatureElement.textContent);
+    let currentCelsius = fahrenheitToCelsius(currentFahrenheit);
+    temperatureElement.textContent = currentCelsius.toFixed(2);
+    unitsElement.innerHTML = `&deg;C <span id="celsius-symbol">|</span>`;
+  });
 
   document.querySelector("#search-form").addEventListener("submit", search);
 
