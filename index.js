@@ -83,11 +83,14 @@ function search(event) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  let temperatureElement = document.querySelector("#temperature");
+  let unitsElement = document.querySelector("#units");
   let fahrenheitLink = document.querySelector("#fahrenheit-link");
+
   fahrenheitLink.addEventListener("click", function () {
     let currentCelsius = parseFloat(temperatureElement.textContent);
     let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
-    temperatureElement.textContent = currentFahrenheit.toFixed(2);
+    temperatureElement.textContent = Math.round(currentFahrenheit); // Round to a whole number
     unitsElement.innerHTML = `&deg;F |`;
   });
 
