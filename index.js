@@ -75,15 +75,12 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.time);
 }
 
-getWeatherByCity(defaultCity);
-
 function getWeatherByCity(city) {
   let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  let city = "Boksburg";
 
   axios.get(apiUrl).then((response) => {
-    showTemperature(response);
+    displayTemperature(response);
   });
 }
 
@@ -97,4 +94,19 @@ function search(event) {
   }
 }
 
-document.querySelector("#search-form").addEventListener("submit", search);
+document.addEventListener("DOMContentLoaded", function () {
+  let celsiusLink = document.querySelector("#celsius");
+  celsiusLink.addEventListener("click", displayCelsius);
+
+  let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  fahrenheitLink.addEventListener("click", function () {
+    let currentCelsius = parseFloat(temperatureElement.textContent);
+    let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
+    temperatureElement.textContent = currentFahrenheit.toFixed(2);
+    unitsElement.innerHTML = `&deg;F | <a href="#" id="celsius">℃</a>`;
+  });
+
+  document.querySelector("#search-form").addEventListener("submit", search);
+
+  getWeatherByCity(defaultCity);
+});
