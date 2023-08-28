@@ -86,13 +86,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let temperatureElement = document.querySelector("#temperature");
   let unitsElement = document.querySelector("#units");
   let fahrenheitLink = document.querySelector("#fahrenheit-link");
-  let celsiusLink = document.querySelector("#celsius");
+  let celsiusLink = document.querySelector("#celsius-link"); // Change this to the correct id
 
   fahrenheitLink.addEventListener("click", function () {
     let currentCelsius = parseFloat(temperatureElement.textContent);
     let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
     temperatureElement.textContent = Math.round(currentFahrenheit);
-    unitsElement.innerHTML = `&deg;F |<a href="#" id="celsius">℃</a>`;
+    unitsElement.innerHTML = `&deg;F |<a href="#" id="celsius-link">℃</a>`;
   });
 
   celsiusLink.addEventListener("click", function () {
