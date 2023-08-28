@@ -21,14 +21,11 @@ let temperatureElement = document.querySelector("#temperature");
 let unitsElement = document.querySelector("#units");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", displayCelsius);
-
 fahrenheitLink.addEventListener("click", function () {
   let currentCelsius = parseFloat(temperatureElement.textContent);
   let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
   temperatureElement.textContent = currentFahrenheit.toFixed(2);
-  unitsElement.innerHTML = `&deg;F | <a href="#" id="celsius">℃</a>`;
+  unitsElement.innerHTML = `&deg;F |<a href="#" id="celsius">℃</a>`;
 });
 
 function formatDate(timeStamp) {
