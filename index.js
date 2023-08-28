@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     unitsElement.innerHTML = `&deg;C <span id="celsius-symbol">|</span>`;
   });
 
-  document.querySelector("#search-form").addEventListener("submit", search);
+  document.querySelector(".weather-app").addEventListener("submit", search);
 
   getWeatherByCity(defaultCity);
 });
