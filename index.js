@@ -1,3 +1,17 @@
+function celsiusToFahrenheit(celsius) {
+  return (celsius * 9) / 5 + 32;
+}
+fahrenheitLink.addEventListener("click", function () {
+  const currentCelsius = parseFloat(temperatureElement.textContent);
+  const currentFahrenheit = celsiusToFahrenheit(currentCelsius);
+  temperatureElement.textContent = currentFahrenheit.toFixed(2);
+  unitsElement.textContent = "℉";
+});
+
+let temperatureElement = document.querySelector("#temperature");
+let unitsElement = document.querySelector("#units");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+
 function formatDate(timeStamp) {
   let date = new Date(timeStamp * 1000);
   let hours = date.getHours();
