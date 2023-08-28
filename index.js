@@ -65,7 +65,44 @@ function getWeatherByCity(city) {
     displayTemperature(response);
   });
 }
+function displayForecast(response) {
+  let forecast = response.data.daily;
 
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col-2">
+      <div class="weather-forecast-date">
+        ${formatDay(forecastDay.time)} </div>
+        <img
+        class= "tempImg"
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+            forecastDay.condition.icon
+          }.png" 
+          alt=""
+          width="40"
+        />
+        <div class="weather-forecast-temps">
+          <span class="weather-forecast-temp-max">${Math.round(
+            forecastDay.temperature.maximum
+          )}°</span> |
+          <span class="weather-forecast-temp-min">${Math.round(
+            forecastDay.temperature.minimum
+          )}° </span>
+        </div>
+      </div>
+   
+  `;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
