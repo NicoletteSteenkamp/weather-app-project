@@ -1,5 +1,5 @@
 function formatDate(timeStamp) {
-  let date = new Date(timeStamp);
+  let date = new Date(timeStamp * 1000);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -23,7 +23,7 @@ function formatDate(timeStamp) {
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  temperatureElement.innerHTML = Math.round(response.data.temperature.daily);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
   let descriptionElement = document.querySelector("#description");
@@ -39,7 +39,7 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.condition.icon);
   let dateElement = document.querySelector("#date");
-  dateElement.innerHTML = formatDate(response.data.time * 1000);
+  dateElement.innerHTML = formatDate(response.data.time);
 }
 let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
 
