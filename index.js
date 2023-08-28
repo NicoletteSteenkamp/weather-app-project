@@ -83,15 +83,12 @@ function search(event) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  let celsiusLink = document.querySelector("#celsius");
-  celsiusLink.addEventListener("click", displayCelsius);
-
   let fahrenheitLink = document.querySelector("#fahrenheit-link");
   fahrenheitLink.addEventListener("click", function () {
     let currentCelsius = parseFloat(temperatureElement.textContent);
     let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
     temperatureElement.textContent = currentFahrenheit.toFixed(2);
-    unitsElement.innerHTML = `&deg;F | <a href="#" id="celsius">℃</a>`;
+    unitsElement.innerHTML = `&deg;F |`;
   });
 
   document.querySelector("#search-form").addEventListener("submit", search);
