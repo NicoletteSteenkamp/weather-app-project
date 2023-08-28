@@ -14,19 +14,19 @@ function getCurrentLocationWeather() {
 function celsiusToFahrenheit(celsius) {
   return (celsius * 9) / 5 + 32;
 }
+
 let temperatureElement = document.querySelector("#temperature");
 let unitsElement = document.querySelector("#units");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 
-function search(event) {
-  event.preventDefault();
-}
-let input = document.querySelector("#city-input");
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", displayCelsius);
+
 fahrenheitLink.addEventListener("click", function () {
   let currentCelsius = parseFloat(temperatureElement.textContent);
   let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
   temperatureElement.textContent = currentFahrenheit.toFixed(2);
-  unitsElement.textContent = "℉";
+  unitsElement.innerHTML = `&deg;F | <a href="#" id="celsius">℃</a>`;
 });
 
 function formatDate(timeStamp) {
