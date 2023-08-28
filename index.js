@@ -13,10 +13,6 @@ function getCurrentLocationWeather() {
   }
 }
 
-function celsiusToFahrenheit(celsius) {
-  return (celsius * 9) / 5 + 32;
-}
-
 let temperatureElement = document.querySelector("#temperature");
 
 function formatDate(timeStamp) {
