@@ -13,8 +13,6 @@ function getCurrentLocationWeather() {
   }
 }
 
-let temperatureElement = document.querySelector("#temperature");
-
 function formatDate(timeStamp) {
   let date = new Date(timeStamp * 1000);
   let hours = date.getHours();
@@ -40,6 +38,8 @@ function formatDate(timeStamp) {
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
+
+  let celsiusTemperature = null;
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
@@ -77,32 +77,30 @@ function search(event) {
     getWeatherByCity(defaultCity);
   }
 }
-function celsiusToFahrenheit(celsius) {
-  return (celsius * 9) / 5 + 32;
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let currentCelsius = parseFloat(temperatureElement.textContent);
+  let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
+  temperatureElement.textContent = currentFahrenheit.toFixed(0);
+  unitsElement.innerHTML = `&deg;F <span id="celsius-symbol">|</span>`;
 }
 
-function fahrenheitToCelsius(fahrenheit) {
-  return ((fahrenheit - 32) * 5) / 9;
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let currentFahrenheit = parseFloat(temperatureElement.textContent);
+  let currentCelsius = fahrenheitToCelsius(currentFahrenheit);
+  temperatureElement.textContent = currentCelsius.toFixed(2);
+  unitsElement.innerHTML = `&deg;C <span id="celsius-symbol">|</span>`;
 }
 document.addEventListener("DOMContentLoaded", function () {
   let temperatureElement = document.querySelector("#temperature");
   let unitsElement = document.querySelector("#units");
   let fahrenheitLink = document.querySelector("#fahrenheit-link");
   let celsiusLink = document.querySelector("#celsius-link");
-
-  fahrenheitLink.addEventListener("click", function () {
-    let currentCelsius = parseFloat(temperatureElement.textContent);
-    let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
-    temperatureElement.textContent = currentFahrenheit.toFixed(0);
-    unitsElement.innerHTML = `&deg;F <span id="celsius-symbol">|</span>`;
-  });
-
-  celsiusLink.addEventListener("click", function () {
-    let currentFahrenheit = parseFloat(temperatureElement.textContent);
-    let currentCelsius = fahrenheitToCelsius(currentFahrenheit);
-    temperatureElement.textContent = currentCelsius.toFixed(2);
-    unitsElement.innerHTML = `&deg;C <span id="celsius-symbol">|</span>`;
-  });
+  fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+  celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
   document.querySelector("#search-form").addEventListener("submit", search);
 
