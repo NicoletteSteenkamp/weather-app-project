@@ -66,15 +66,6 @@ function getWeatherByCity(city) {
   });
 }
 
-function search(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#city-input");
-  let cityName = cityInput.value.trim();
-  if (cityName.length > 0) {
-    defaultCity = cityName;
-    getWeatherByCity(defaultCity);
-  }
-}
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -91,6 +82,15 @@ function displayCelsiusTemperature(event) {
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  let cityName = cityInput.value.trim();
+  if (cityName.length > 0) {
+    defaultCity = cityName;
+    getWeatherByCity(defaultCity);
+  }
 }
 
 let form = document.querySelector("#search-form");
