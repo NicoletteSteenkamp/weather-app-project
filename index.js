@@ -18,16 +18,6 @@ function celsiusToFahrenheit(celsius) {
 }
 
 let temperatureElement = document.querySelector("#temperature");
-temperatureElement.textContent = "--";
-let unitsElement = document.querySelector("#units");
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-
-fahrenheitLink.addEventListener("click", function () {
-  let currentCelsius = parseFloat(temperatureElement.textContent);
-  let currentFahrenheit = celsiusToFahrenheit(currentCelsius);
-  temperatureElement.textContent = currentFahrenheit.toFixed(2);
-  unitsElement.innerHTML = `&deg;F |<a href="#" id="celsius">℃</a>`;
-});
 
 function formatDate(timeStamp) {
   let date = new Date(timeStamp * 1000);
