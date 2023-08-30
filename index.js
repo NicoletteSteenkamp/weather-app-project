@@ -75,10 +75,10 @@ function displayForecast(response) {
       forecastHTML += `
         <div class="col-2 WeatherForecastPreview">
           <div class="forecast-time">${formatDate(forecastDay.time)}</div>
-          <img class="tempImg" src="${
-            forecastDay.condition.icon_url
-          }" alt="" width="40">
-          <div class="forecast-temperature">
+        <img class="tempImg" src="${
+          forecastDay.condition.icon_url
+        }" alt="" width="40">
+
             <span class="forecast-temperature-max">${Math.round(
               forecastDay.temperature.maximum
             )}°</span> |
