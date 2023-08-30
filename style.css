@@ -37,6 +37,7 @@ body {
 .overview ul {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .overview li {
@@ -129,7 +130,7 @@ small a {
   color: #708098;
 }
 
-/ .climate {
+.climate {
   position: relative;
   bottom: -65px;
 }
