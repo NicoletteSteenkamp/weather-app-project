@@ -152,3 +152,6 @@ small a {
   text-decoration: none;
   color: #708098;
 }
+.WeatherForecastPreview {
+  margin-bottom: 10px;
+}
