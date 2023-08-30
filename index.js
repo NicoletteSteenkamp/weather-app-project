@@ -67,7 +67,7 @@ function getWeatherByCity(city) {
 }
 function displayForecast(response) {
   let forecast = response.data.daily;
-  let forecastElement = document.querySelector(".WeatherForecast"); // Changed to match your HTML structure
+  let forecastElement = document.querySelector(".WeatherForecast");
   let forecastHTML = "";
 
   forecast.forEach(function (forecastDay, index) {
@@ -90,10 +90,10 @@ function displayForecast(response) {
     }
   });
 
+  forecastHTML += `</div>`;
+
   forecastElement.innerHTML = forecastHTML;
 }
-forecastHTML = forecastHTML + `</div>`;
-forecastElement.innerHTML = forecastHTML;
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
