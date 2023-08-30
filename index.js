@@ -72,12 +72,12 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
-      forecastHTML += `<div class="col-2 WeatherForecastPreview">
-          <div class="forecast-time">${formatDay(forecastDay.time)}</div>
-          <canvas width="38" height="38"></canvas>
-          <img class="tempImg" src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-            forecastDay.condition.icon
-          }.png" alt="" width="40">
+      forecastHTML += `
+        <div class="col-2 WeatherForecastPreview">
+          <div class="forecast-time">${formatDate(forecastDay.time)}</div>
+          <img class="tempImg" src="${
+            forecastDay.condition.icon_url
+          }" alt="" width="40">
           <div class="forecast-temperature">
             <span class="forecast-temperature-max">${Math.round(
               forecastDay.temperature.maximum
@@ -89,8 +89,6 @@ function displayForecast(response) {
         </div>`;
     }
   });
-
-  forecastHTML += `</div>`;
 
   forecastElement.innerHTML = forecastHTML;
 }
