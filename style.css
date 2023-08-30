@@ -1,7 +1,7 @@
 body {
   font-family: Cerebri-Sans, Helvetica, Arial, sans-serif;
   color: hsl(0, 0%, 0%);
-  background-image: url("clouds.jpg");
+  background-image: url("clouds.jpg.jpg");
 }
 
 .weather-app-wrapper {
