@@ -118,12 +118,12 @@ li:first-letter {
 }
 .weather-temp .units {
   position: relative;
-  top: -30px;
+  top: -10px;
 }
 
 .climate {
   position: relative;
-  bottom: -95px;
+  bottom: -75px;
 }
 .weather-temp img {
   margin-left: 155px;
