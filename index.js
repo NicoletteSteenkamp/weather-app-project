@@ -105,15 +105,7 @@ function displayForecast(response) {
 }
 
 function getDayName(index) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
   let todayIndex = new Date().getDay();
   let targetIndex = (todayIndex + index + 1) % 7;
   return days[targetIndex];
