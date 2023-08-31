@@ -37,8 +37,9 @@ function formatDate(timeStamp) {
 }
 
 function displayTemperature(response) {
-  let celsiusTemperature = document.querySelector("#temperature");
-  celsiusTemperature.innerHTML = Math.round(response.data.temperature.current);
+  celsiusTemperature = Math.round(response.data.temperature.current);
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = celsiusTemperature;
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
   let descriptionElement = document.querySelector("#description");
@@ -55,6 +56,14 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.condition.icon);
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time);
+  getForecast(response.data.coordinates);
+}
+
+function getForecast(coordinates) {
+  let apiKey = "ae997t30869fc345038bf7f0abaao7e6";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getWeatherByCity(city) {

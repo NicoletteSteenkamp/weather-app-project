@@ -97,14 +97,6 @@ li:first-letter {
 .weather-forecast-temperatures {
   font-size: 13px;
 }
-#fahrenheit-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-#fahrenheit-link:hover {
-  color: inherit;
-}
 
 .input-group {
   margin-bottom: 0;
@@ -112,14 +104,6 @@ li:first-letter {
 
 .form-control {
   border-radius: 0.25rem;
-}
-#celsius-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-#celsius-link:hover {
-  color: inherit;
 }
 .weather-temp .units {
   position: relative;
@@ -154,4 +138,11 @@ small a {
 }
 .WeatherForecastPreview {
   margin-bottom: 10px;
+}
+#units a {
+  color: blue;
+  text-decoration: none !important;
+}
+.active {
+  color: black !important;
 }
