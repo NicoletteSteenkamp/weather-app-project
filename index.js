@@ -1,5 +1,6 @@
 let defaultCity = "Boksburg";
 let celsiusTemperature = null;
+
 function getCurrentLocationWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -81,13 +82,14 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
+      let dayName = getDayName(index);
       forecastHTML += `
-        <div class="col-2 WeatherForecastPreview">
-          <div class="forecast-time">${formatDate(forecastDay.time)}</div>
-        <img class="tempImg" src="${
-          forecastDay.condition.icon_url
-        }" alt="" width="40">
-
+        <div class="col-2 WeatherForecastPreview" id="forecast-day-${index}">
+          <div class="forecast-time">${dayName}</div>
+          <img class="tempImg" src="${
+            forecastDay.condition.icon_url
+          }" alt="" width="40">
+          <div class="forecast-temperature">
             <span class="forecast-temperature-max">${Math.round(
               forecastDay.temperature.maximum
             )}°</span> |
@@ -100,6 +102,21 @@ function displayForecast(response) {
   });
 
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getDayName(index) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let todayIndex = new Date().getDay();
+  let targetIndex = (todayIndex + index) % 7;
+  return days[targetIndex];
 }
 
 function displayFahrenheitTemperature(event) {
