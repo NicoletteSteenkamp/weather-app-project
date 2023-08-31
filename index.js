@@ -115,7 +115,7 @@ function getDayName(index) {
     "Saturday",
   ];
   let todayIndex = new Date().getDay();
-  let targetIndex = (todayIndex + index) % 7;
+  let targetIndex = (todayIndex + index + 1) % 7;
   return days[targetIndex];
 }
 
